@@ -1,19 +1,21 @@
 name: CI
-on: [push]
+on:
+  push:
+    branches: 
+      - master
 
 jobs:
-    deploy:
-        name: deploy
-        if: github.ref == 'refs/heads/master'
-        runs-on: [ubuntu-latest]
-        steps:
-            - actions/checkout@v1
-            - uses: webfactory/ssh-agent@v0.2.0
-              with:
-                  ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-            - uses: appleboy/ssh-action@master
-                with:
-                  host: ${{ secrets.SSH_IP }}
-                  username: ${{ secrets.SSH_USERNAME }}
-                  key: ${{ secrets.SSH_PRIVATE_KEY }}
-                  script: cd TheOracle && git pull origin master && docker-compose up -d --build
+  deploy:
+    name: Deploy
+    runs-on: [ubuntu-latest]
+    steps:
+    - uses: actions/checkout@master
+    - uses: webfactory/ssh-agent@v0.2.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_IP }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: cd TheOracle && git pull origin master && docker-compose up -d --build
