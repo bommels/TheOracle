@@ -76,7 +76,7 @@ class Binance:
             return
 
         message_color = int('3CBA54', 16) if not is_sell else int('DB3236', 16)
-        message_order_type = 'long' if is_sell else 'sell'
+        message_order_type = 'long' if is_sell else 'short'
         embed = Embed(color=message_color, description='Liquidated **${}** {} on **{} @ {}**'.format(utils.cool_number(usd_value), message_order_type, symbol, price))
         embed.set_author(name='Binance', url=settings.BINANCE_REF_URL, icon_url='https://pbs.twimg.com/profile_images/1228505754300076034/jecNdLm2_400x400.jpg')
 
