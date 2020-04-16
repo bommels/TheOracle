@@ -1,5 +1,4 @@
 FROM python:3.8-slim
-MAINTAINER Terry Bommels "dev+docker@terry.sh"
 
 RUN apt-get update && apt-get install -y --no-install-recommends swig build-essential libssl-dev ffmpeg
 
