@@ -31,14 +31,14 @@ BINANCE_MIN_TRADE_VALUE_USD = 1000000
 BINANCE_MIN_TRADE_VALUE_USD_ALTCOIN = 100000
 
 # Tweakers
-TWEAKERS_MONITOR_INTERVAL_M = 3
-TWEAKERS_MONITOR_SLEEP_S = 5
+TWEAKERS_MONITOR_INTERVAL_M = 1
+TWEAKERS_MONITOR_SLEEP_S = 10
 TWEAKERS_MONITOR_URLS = [  # (channel_id, pricewatch_url)
     (700758869919662081, 'https://tweakers.net/pricewatch/1461152/nintendo-switch-2019-model-blauw-rood.html'),
     (700758869919662081, 'https://tweakers.net/pricewatch/1463336/nintendo-switch-2019-model-grijs.html'),
-    (700758869919662081, 'https://tweakers.net/pricewatch/1515408/nintendo-switch-animal-crossing-new-horizons-editie.html'),
-    (700758869919662081, 'https://tweakers.net/pricewatch/1419410/nintendo-switch-neon-blauw-neon-rood-+-35-euro-eshop-tegoed.html'),
-    (700758869919662081, 'https://tweakers.net/pricewatch/1498952/nintendo-switch-2019-model-+-mario-kart-8-deluxe-blauw-rood.html'),
-    (700758869919662081, 'https://tweakers.net/pricewatch/533077/nintendo-switch-zwart.html'),
-    (700758869919662081, 'https://tweakers.net/pricewatch/1250061/nintendo-switch-neon-blauw-neon-rood-+-fortnite.html'),
+    # (700758869919662081, 'https://tweakers.net/pricewatch/1515408/nintendo-switch-animal-crossing-new-horizons-editie.html'),
+    # (700758869919662081, 'https://tweakers.net/pricewatch/1419410/nintendo-switch-neon-blauw-neon-rood-+-35-euro-eshop-tegoed.html'),
+    # (700758869919662081, 'https://tweakers.net/pricewatch/1498952/nintendo-switch-2019-model-+-mario-kart-8-deluxe-blauw-rood.html'),
+    # (700758869919662081, 'https://tweakers.net/pricewatch/533077/nintendo-switch-zwart.html'),
+    # (700758869919662081, 'https://tweakers.net/pricewatch/1250061/nintendo-switch-neon-blauw-neon-rood-+-fortnite.html'),
 ]

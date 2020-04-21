@@ -1,3 +1,4 @@
+import asyncio
 import logging
 import time
 
@@ -26,4 +27,4 @@ class Monitor(commands.Cog):
     async def watch_tweakers_listings(self):
         for channel_id, product_url in settings.TWEAKERS_MONITOR_URLS:
             await self.tweakers.post_new_listings(self.bot, channel_id, product_url)
-            time.sleep(settings.TWEAKERS_MONITOR_SLEEP_S)
+            await asyncio.sleep(10)
