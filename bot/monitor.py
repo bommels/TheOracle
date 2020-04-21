@@ -18,7 +18,8 @@ class Monitor(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        self.watch_tweakers_listings.start()
+        # self.watch_tweakers_listings.start()
+        pass
 
     def cog_unload(self):
         self.watch_tweakers_listings.cancel()
