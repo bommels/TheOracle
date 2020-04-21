@@ -13,20 +13,24 @@ logger = logging.getLogger(__name__)
 class Bitmex:
     @staticmethod
     async def watch_events(bot):
-        logger.info('Opening BitMEX WebSocket')
-        async with websockets.connect('wss://www.bitmex.com/realtime?subscribe=liquidation,trade') as websocket:
-            async for message in websocket:
-                message = json.loads(message)
+        while True:
+            try:
+                logger.info('Opening BitMEX WebSocket')
+                async with websockets.connect('wss://www.bitmex.com/realtime?subscribe=liquidation,trade') as websocket:
+                    async for message in websocket:
+                        message = json.loads(message)
 
-                is_liquidation = 'table' in message and message['table'] == 'liquidation'
-                if is_liquidation and message['action'] == 'insert':
-                    logger.debug('Received liquidation: {}'.format(message))
-                    await Bitmex.send_liquidation_notification(bot, message)
+                        is_liquidation = 'table' in message and message['table'] == 'liquidation'
+                        if is_liquidation and message['action'] == 'insert':
+                            logger.debug('Received liquidation: {}'.format(message))
+                            await Bitmex.send_liquidation_notification(bot, message)
 
-                is_trade = 'table' in message and message['table'] == 'trade'
-                if is_trade and message['action'] == 'insert':
-                    logger.debug('Received trade: {}'.format(message))
-                    await Bitmex.send_trade_notification(bot, message)
+                        is_trade = 'table' in message and message['table'] == 'trade'
+                        if is_trade and message['action'] == 'insert':
+                            logger.debug('Received trade: {}'.format(message))
+                            await Bitmex.send_trade_notification(bot, message)
+            except websockets.exceptions.ConnectionClosedError:
+                logger.info('Lost connection to BitMEX WebSocket')
 
     @staticmethod
     async def send_liquidation_notification(bot, liquidation):
