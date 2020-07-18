@@ -8,6 +8,9 @@ class Crypto(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
+
+    @commands.Cog.listener()
+    async def on_ready(self):
         self.watch_bitmex.start()
         self.watch_binance_futures.start()
         self.watch_binance_spot.start()

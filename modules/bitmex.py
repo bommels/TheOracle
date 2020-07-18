@@ -37,7 +37,7 @@ class Bitmex:
         for order in liquidation['data']:
             is_sell = order['side'] == 'Sell'
             quantity, price = float(order['leavesQty']), float(order['price'])
-            usd_value = quantity if order['symbol'].startswith('XBT') else quantity * price
+            usd_value = quantity
 
             if usd_value < settings.BITMEX_MIN_LIQ_VALUE_USD and 'XBT' in order['symbol']:
                 continue
