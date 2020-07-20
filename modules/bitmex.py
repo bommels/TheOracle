@@ -48,7 +48,7 @@ class Bitmex:
             message_color = int('3CBA54', 16) if not is_sell else int('DB3236', 16)
             message_order_type = 'short' if not is_sell else 'long'
             embed = Embed(color=message_color, description='Liquidated **${}** {} on **{} @ {}**'.format(utils.cool_number(usd_value), message_order_type, order['symbol'], price))
-            embed.set_author(name='BitMEX', url=settings.BITMEX_REF_URL, icon_url='https://pbs.twimg.com/profile_images/1212404463958470656/R_Rfe9Xx_400x400.png')
+            embed.set_author(name='BitMEX', url=settings.BITMEX_REF_URL, icon_url='https://u.terry.sh/tpj.png')
 
             if usd_value >= settings.LIQUIDATION_THUMBNAIL_MIN_VALUE_USD:
                 embed.set_thumbnail(url=random.choice(settings.LIQUIDATION_THUMBNAILS))
@@ -70,7 +70,7 @@ class Bitmex:
 
             message_color = int('3CBA54', 16) if not is_sell else int('DB3236', 16)
             embed = Embed(color=message_color, description='{} **${}** on **{} @ {}**'.format(order['side'], utils.cool_number(usd_value), order['symbol'], order['price']))
-            embed.set_author(name='BitMEX', url=settings.BITMEX_REF_URL, icon_url='https://pbs.twimg.com/profile_images/1212404463958470656/R_Rfe9Xx_400x400.png')
+            embed.set_author(name='BitMEX', url=settings.BITMEX_REF_URL, icon_url='https://u.terry.sh/tpj.png')
 
             logger.info('Broadcasting trade message: {}'.format(order))
             await bot.get_channel(settings.DISCORD_TRADES_CHANNEL).send(embed=embed)
