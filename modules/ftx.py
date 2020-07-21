@@ -58,7 +58,7 @@ class FTX:
 
         message_color = int('3CBA54', 16) if not is_sell else int('DB3236', 16)
         message_order_type = 'short' if not is_sell else 'long'
-        embed = Embed(color=message_color, description='Liquidated **${}** {} on **{} @ {}**'.format(utils.cool_number(usd_value), message_order_type, market.split('-')[0], price))
+        embed = Embed(color=message_color, description='Liquidated **${}** {} on **{} @ {}**'.format(utils.cool_number(usd_value), message_order_type, market, price))
         embed.set_author(name='FTX', url=settings.FTX_REF_URL, icon_url='https://u.terry.sh/is6.jpg')
 
         if usd_value >= settings.LIQUIDATION_THUMBNAIL_MIN_VALUE_USD:
@@ -80,7 +80,7 @@ class FTX:
             return
 
         message_color = int('3CBA54', 16) if not is_sell else int('DB3236', 16)
-        embed = Embed(color=message_color, description='{} **${}** on **{} @ {}**'.format(trade['side'].upper(), utils.cool_number(usd_value), market.split('-')[0], trade['price']))
+        embed = Embed(color=message_color, description='{} **${}** on **{} @ {}**'.format(trade['side'].upper(), utils.cool_number(usd_value), market, trade['price']))
         embed.set_author(name='FTX', url=settings.FTX_REF_URL, icon_url='https://u.terry.sh/is6.jpg')
 
         logger.info('Broadcasting trade message: {}'.format(trade))
